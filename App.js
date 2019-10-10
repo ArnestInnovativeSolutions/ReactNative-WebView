@@ -16,6 +16,7 @@ export default class App extends Component {
     };
   }
 
+  //Checking the permission 
   async requestLocationPermission() {
     if (Platform.OS === 'ios') {
       return true;
@@ -34,7 +35,8 @@ export default class App extends Component {
       }
     }
   }
-
+  
+//Getting the current location and posting the location to webView
   getLocation = () => {
     this.requestLocationPermission()
       .then((didGetPermission) => {
@@ -56,9 +58,8 @@ export default class App extends Component {
       })
 
   }
-
+// launching the camera and posting the image base64 encoded data to webView
   addCameraPhoto = () => {
-
     ImagePicker.launchCamera({}, response => {
 
       if (response.didCancel) {
